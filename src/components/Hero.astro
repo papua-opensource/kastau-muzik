@@ -42,6 +42,10 @@
 					<div class="inline-flex gap-2 text-xs text-neutral-700 dark:text-neutral-300">
 						<span>Sedang diputar</span>
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M2 9h2v12H2zm6-6h2v18H8zm6 9h2v9h-2zm6-6h2v15h-2z"/></svg>
+						 <div class="loader"></div>
+						 <div class="loader-1"></div>
+						 <div class="loader-2"></div>
+						 <div class="loader-3"></div>
 					</div>
 				  <div>
 					<p class="text-base font-semibold dark:text-neutral-200">Nakon Gandeguai</p>
@@ -57,3 +61,113 @@
 	  </div>
 	</div>
 	<!-- ========== END HERO ========== -->
+
+
+	<style>
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 14px;
+  aspect-ratio: 1;
+  --c: no-repeat linear-gradient(#737373 0 0);
+  background: 
+    var(--c) 0    100%,
+    var(--c) 33%  100%,
+    var(--c) 66%  100%,
+    var(--c) 100% 100%;
+  background-size: 16% 100%;
+  animation: rhythm 1.5s infinite ease-in-out;
+}
+
+@keyframes rhythm {
+  0%, 100% {
+    background-size: 16% 50%, 16% 100%, 16% 70%, 16% 90%;
+  }
+  25% {
+    background-size: 16% 100%, 16% 50%, 16% 100%, 16% 70%;
+  }
+  50% {
+    background-size: 16% 70%, 16% 100%, 16% 50%, 16% 100%;
+  }
+  75% {
+    background-size: 16% 90%, 16% 70%, 16% 100%, 16% 50%;
+  }
+}
+
+		
+.loader-1 {
+  width: 10px;
+  aspect-ratio: 1;
+  --c: no-repeat linear-gradient(#737373 0 0);
+  background: 
+    var(--c) 0%   100%,
+    var(--c) 50%  100%,
+    var(--c) 100% 100%;
+  animation: l2 1s infinite linear;
+}
+@keyframes l2 {
+  0%  {background-size: 20% 100%,20% 100%,20% 100%}
+  20% {background-size: 20% 60% ,20% 100%,20% 100%}
+  40% {background-size: 20% 80% ,20% 60% ,20% 100%}
+  60% {background-size: 20% 100%,20% 80% ,20% 60% }
+  80% {background-size: 20% 100%,20% 100%,20% 80% }
+  100%{background-size: 20% 100%,20% 100%,20% 100%}
+}
+
+.loader-2 {
+  width: 15px;
+  aspect-ratio: 1;
+  --c: no-repeat linear-gradient(#737373 0 0);
+  background: 
+    var(--c) 0    100%,
+    var(--c) 33%  100%,
+    var(--c) 66%  100%,
+    var(--c) 100% 100%;
+  background-size: 18% 100%;
+  animation: rhythm2 1.5s infinite ease-in-out;
+}
+
+@keyframes rhythm2 {
+  0%, 100% {
+    background-size: 18% 50%, 18% 100%, 18% 70%, 18% 90%;
+  }
+  25% {
+    background-size: 18% 100%, 18% 50%, 18% 100%, 18% 70%;
+  }
+  50% {
+    background-size: 18% 70%, 18% 100%, 18% 50%, 18% 100%;
+  }
+  75% {
+    background-size: 18% 90%, 18% 70%, 18% 100%, 18% 50%;
+  }
+}
+
+/* HTML: <div class="loader"></div> */
+.loader-3 {
+  width: 16px;
+  height: 16px;
+  --c: no-repeat linear-gradient(#737373 0 0);
+  background:
+    var(--c) 0 100%,
+    var(--c) 34% 100%,
+    var(--c) 62% 100%,
+    var(--c) 93% 100%;
+  background-size: 14% 100%;
+  animation: rhythm3 1.5s infinite ease-in-out;
+}
+
+@keyframes rhythm3 {
+  0%, 100% {
+    background-size: 14% 50%, 14% 100%, 14% 70%, 14% 90%;
+  }
+  25% {
+    background-size: 14% 100%, 14% 50%, 14% 100%, 14% 70%;
+  }
+  50% {
+    background-size: 14% 70%, 14% 100%, 14% 50%, 14% 100%;
+  }
+  75% {
+    background-size: 14% 90%, 14% 70%, 14% 100%, 14% 50%;
+  }
+}
+	</style>

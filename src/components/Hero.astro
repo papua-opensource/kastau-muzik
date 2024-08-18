@@ -28,43 +28,41 @@
 					Rasakan kekayaan budaya Papua melalui lantunan musik daerah yang penuh makna. Tekan play dan biarkan suaranya membawa kamu lebih dekat dengan alam dan tradisi.
 				</p>
 			</div>
-			<div class="hidden lg:flex">
-				<button id="play-pause" class="amplitude-play-pause mr-3">
+			<div class="hidden lg:flex">				
+				<a href="/" aria-label="Play Song" class="mr-3">
 					<div class="flex items-center justify-center w-10 h-10 text-white transition duration-300 transform rounded-full shadow-md bg-orange-600 hover:bg-orange-700 hover:scale-110">
-						<svg id="play-icon" class="w-6" fill="currentColor" viewBox="0 0 24 24">
-							<path
-								d="M16.53,11.152l-8-5C8.221,5.958,7.833,5.949,7.515,6.125C7.197,6.302,7,6.636,7,7v10 c0,0.364,0.197,0.698,0.515,0.875C7.667,17.958,7.833,18,8,18c0.184,0,0.368-0.051,0.53-0.152l8-5C16.822,12.665,17,12.345,17,12 S16.822,11.335,16.53,11.152z"
-							></path>
-						</svg>
-						<svg id="pause-icon" class="w-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-						</svg>
+						<svg class="w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M14 19V5h4v14zm-8 0V5h4v14z"/></svg>
 					</div>
-				</button>
-				<div class="flex flex-col gap-y-1">
-					<div class="inline-flex items-center gap-2 text-xs text-neutral-700 dark:text-neutral-300">
-						<span>Sedang diputar</span>
-						<!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M2 9h2v12H2zm6-6h2v18H8zm6 9h2v9h-2zm6-6h2v15h-2z"/></svg> -->
-						<span class="loader mb-1"></span>
+					</a>
+					<div class="flex flex-col gap-y-1">
+						<div class="inline-flex items-center gap-2 text-xs text-neutral-700 dark:text-neutral-300">
+							<span>Sedang diputar</span>
+							<!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M2 9h2v12H2zm6-6h2v18H8zm6 9h2v9h-2zm6-6h2v15h-2z"/></svg> -->
+							<span class="loader mb-1"></span>
+						</div>
+						<div>
+							<p class="text-base font-semibold dark:text-neutral-200">Nakon Gandeguai</p>
+							<p class="text-sm text-neutral-700 dark:text-neutral-300">Seng Yesus Wiru Wane</p>
+						</div>
 					</div>
-					<div>
-						<!-- <p class="text-base font-semibold dark:text-neutral-200">Nakon Gandeguai</p>
-						<p class="text-sm text-neutral-700 dark:text-neutral-300">Seng Yesus Wiru Wane</p> -->
-						<h2 data-amplitude-song-info="name" class="text-base font-semibold dark:text-neutral-200">Nakon Gandeguai</h2>
-						<p data-amplitude-song-info="artist" class="text-sm text-neutral-700 dark:text-neutral-300">Seng Yesus Wiru Wane</p>
-					</div>
-				</div>
 			</div>
 		</div>
 		<div class="px-5 pt-6 pb-5 text-center border border-neutral-300 rounded lg:w-2/5">
 			<img class="object-cover w-full h-72 rounded shadow-lg sm:h-80" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/18/fd/65/18fd659c-e4ed-d8b7-91c5-cd25fdb7d594/b33e6c3c-3972-4b93-825c-c69cabf17bc1.jpg/600x600bb.jpg" alt="" />
 		</div>
 		<div class="flex pt-8 lg:hidden">
-			<a href="/" aria-label="Play Song" class="mr-3">
-			<div class="flex items-center justify-center w-10 h-10 text-white transition duration-300 transform rounded-full shadow-md bg-orange-600 hover:bg-orange-700 hover:scale-110">
-				<svg class="w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M14 19V5h4v14zm-8 0V5h4v14z"/></svg>
-			</div>
-			</a>
+			<button id="play-pause" class="amplitude-play-pause mr-3">
+				<div class="flex items-center justify-center w-10 h-10 text-white transition duration-300 transform rounded-full shadow-md bg-orange-600 hover:bg-orange-700 hover:scale-110">
+					<svg id="play-icon" class="w-6" fill="currentColor" viewBox="0 0 24 24">
+						<path
+							d="M16.53,11.152l-8-5C8.221,5.958,7.833,5.949,7.515,6.125C7.197,6.302,7,6.636,7,7v10 c0,0.364,0.197,0.698,0.515,0.875C7.667,17.958,7.833,18,8,18c0.184,0,0.368-0.051,0.53-0.152l8-5C16.822,12.665,17,12.345,17,12 S16.822,11.335,16.53,11.152z"
+						></path>
+					</svg>
+					<svg id="pause-icon" class="w-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+					</svg>
+				</div>
+			</button>
 			<div class="flex flex-col gap-y-1">
 				<div class="inline-flex items-center gap-2 text-xs text-neutral-700 dark:text-neutral-300">
 					<span>Sedang diputar</span>
@@ -72,8 +70,10 @@
 					<span class="loader mb-1"></span>
 				</div>
 				<div>
-					<p class="text-base font-semibold dark:text-neutral-200">Nakon Gandeguai</p>
-					<p class="text-sm text-neutral-700 dark:text-neutral-300">Seng Yesus Wiru Wane</p>
+					<!-- <p class="text-base font-semibold dark:text-neutral-200">Nakon Gandeguai</p>
+					<p class="text-sm text-neutral-700 dark:text-neutral-300">Seng Yesus Wiru Wane</p> -->
+					<h2 data-amplitude-song-info="name" class="text-base font-semibold dark:text-neutral-200">Nakon Gandeguai</h2>
+					<p data-amplitude-song-info="artist" class="text-sm text-neutral-700 dark:text-neutral-300">Seng Yesus Wiru Wane</p>
 				</div>
 			</div>
 		</div>

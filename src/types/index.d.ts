@@ -1,6 +1,7 @@
 // Definisikan tipe untuk objek musik
 export type Music = {
-    thumbnail: string;
     title: string;
     artist: string;
+    url: string;
+    cover_art_url: string;
 }

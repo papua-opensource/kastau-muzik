@@ -51,14 +51,14 @@
 			<img class="object-cover w-full h-72 rounded shadow-lg sm:h-80" src="https://upload.wikimedia.org/wikipedia/en/f/f1/Tycho_-_Epoch.jpg" alt="" />
 		</div>
 		<div class="flex pt-8 lg:hidden">
-			<button id="play-pause" class="amplitude-play-pause mr-3">
+			<button class="mr-3">
 				<div class="flex items-center justify-center w-10 h-10 text-white transition duration-300 transform rounded-full shadow-md bg-orange-600 hover:bg-orange-700 hover:scale-110">
-					<svg id="play-icon" class="w-6" fill="currentColor" viewBox="0 0 24 24">
+					<svg class="w-6" fill="currentColor" viewBox="0 0 24 24">
 						<path
 							d="M16.53,11.152l-8-5C8.221,5.958,7.833,5.949,7.515,6.125C7.197,6.302,7,6.636,7,7v10 c0,0.364,0.197,0.698,0.515,0.875C7.667,17.958,7.833,18,8,18c0.184,0,0.368-0.051,0.53-0.152l8-5C16.822,12.665,17,12.345,17,12 S16.822,11.335,16.53,11.152z"
 						></path>
 					</svg>
-					<svg id="pause-icon" class="w-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<svg class="w-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
 					</svg>
 				</div>
@@ -70,10 +70,8 @@
 					<span class="loader mb-1"></span>
 				</div>
 				<div>
-					<!-- <p class="text-base font-semibold dark:text-neutral-200">Nakon Gandeguai</p>
-					<p class="text-sm text-neutral-700 dark:text-neutral-300">Seng Yesus Wiru Wane</p> -->
-					<h2 data-amplitude-song-info="name" class="text-base font-semibold dark:text-neutral-200">Nakon Gandeguai</h2>
-					<p data-amplitude-song-info="artist" class="text-sm text-neutral-700 dark:text-neutral-300">Seng Yesus Wiru Wane</p>
+					<h2 class="text-base font-semibold dark:text-neutral-200">Nakon Gandeguai</h2>
+					<p class="text-sm text-neutral-700 dark:text-neutral-300">Seng Yesus Wiru Wane</p>
 				</div>
 			</div>
 		</div>
@@ -111,7 +109,7 @@
 	}
 </style>
 
-<script is:inline>
+<!-- <script is:inline>
 	document.addEventListener('DOMContentLoaded', function() {
 	  // Inisialisasi Amplitude
 	  Amplitude.init({
@@ -146,4 +144,4 @@
 			}
 		});
 	});
-  </script>
+  </script> -->

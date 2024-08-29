@@ -1,10 +1,11 @@
 import { Howl } from 'howler';
+import type { Music } from '../types/index';
 
-import type { Music } from "../types";
 
 let currentSound: Howl | null = null;
 let currentButton: HTMLButtonElement | null = null;
 let currentIndex: number = -1;
+let activeSong: Music | null = null;
 
 // Hero elements
 const heroPlayPauseButton = document.getElementById('hero-play-pause-button') as HTMLButtonElement;
@@ -59,18 +60,19 @@ function updatePlayState(isPlaying: boolean): void {
     }
 }
 
-function updateMusicInfo(title: string, artist: string, coverArt: string, isPlaying: boolean): void {
-    heroSongTitle.textContent = title;
-    heroSongArtist.textContent = artist;
-    heroCoverArt.src = coverArt;
-    musicControlTitle.textContent = title;
+function updateMusicInfo(song: Music, isPlaying: boolean): void {
+    heroSongTitle.textContent = song.title;
+    heroSongArtist.textContent = song.artist;
+    heroCoverArt.src = song.cover_art_url;
+    musicControlTitle.textContent = song.title;
 
     updatePlayState(isPlaying);
 
     musicInfo.classList.remove('hidden');
     musicInfo.classList.add('flex');
 
-    localStorage.setItem('lastPlayedSong', JSON.stringify({ title, artist, coverArt }));
+    localStorage.setItem('lastPlayedSong', JSON.stringify(song));
+    activeSong = song;
 }
 
 function updateSongCardIcons(button: HTMLButtonElement, isPlaying: boolean): void {
@@ -116,63 +118,87 @@ function playPause(): void {
             if (currentButton) updateSongCardIcons(currentButton, true);
             requestAnimationFrame(updateProgressBar);
         }
+    } else if (activeSong) {
+        playSong(activeSong);
     }
+}
+
+function playSong(song: Music): void {
+    if (currentSound) {
+        currentSound.stop();
+    }
+
+    currentSound = new Howl({
+        src: [song.url],
+        html5: true,
+        onplay: () => {
+            requestAnimationFrame(updateProgressBar);
+            updatePlayState(true);
+            const button = findButtonForSong(song);
+            if (button) {
+                setActiveSong(button, true);
+            }
+        },
+        onpause: () => {
+            updatePlayState(false);
+            if (currentButton) updateSongCardIcons(currentButton, false);
+        },
+        onend: () => {
+            updatePlayState(false);
+            if (currentButton) updateSongCardIcons(currentButton, false);
+            playNext();
+        },
+        onloaderror: () => {
+            console.error('Error loading audio file:', song.url);
+        }
+    });
+
+    currentSound.play();
+    updateMusicInfo(song, true);
+}
+
+function findButtonForSong(song: Music): HTMLButtonElement | null {
+    return Array.from(playButtons).find(button =>
+        button.getAttribute('data-music-url') === song.url
+    ) || null;
 }
 
 function playNext(): void {
     if (currentIndex < playButtons.length - 1) {
-        if (currentButton) updateSongCardIcons(currentButton, false);
         playButtons[currentIndex + 1].click();
     }
 }
 
 function playPrevious(): void {
     if (currentIndex > 0) {
-        if (currentButton) updateSongCardIcons(currentButton, false);
         playButtons[currentIndex - 1].click();
     }
 }
 
+function getRandomSong(): Music {
+    const randomIndex = Math.floor(Math.random() * playButtons.length);
+    const randomButton = playButtons[randomIndex];
+    const musicUrl = randomButton.getAttribute('data-music-url') || '';
+    const coverArtUrl = randomButton.getAttribute('data-cover-art') || '';
+    const title = randomButton.closest('.swiper-slide')?.querySelector('h3')?.textContent || '';
+    const artist = randomButton.closest('.swiper-slide')?.querySelector('p')?.textContent || '';
+
+    return { title, artist, url: musicUrl, cover_art_url: coverArtUrl };
+}
+
 playButtons.forEach(button => {
     button.addEventListener('click', function (this: HTMLButtonElement) {
-        const musicUrl = this.getAttribute('data-music-url');
-        const coverArt = this.getAttribute('data-cover-art');
+        const musicUrl = this.getAttribute('data-music-url') || '';
+        const coverArtUrl = this.getAttribute('data-cover-art') || '';
         const title = this.closest('.swiper-slide')?.querySelector('h3')?.textContent || '';
         const artist = this.closest('.swiper-slide')?.querySelector('p')?.textContent || '';
+
+        const song: Music = { title, artist, url: musicUrl, cover_art_url: coverArtUrl };
 
         if (currentSound && currentButton === this) {
             playPause();
         } else {
-            if (currentSound) {
-                currentSound.stop();
-                if (currentButton) updateSongCardIcons(currentButton, false);
-            }
-
-            if (musicUrl) {
-                currentSound = new Howl({
-                    src: [musicUrl],
-                    html5: true,
-                    onplay: () => {
-                        requestAnimationFrame(updateProgressBar);
-                        updateSongCardIcons(this, true);
-                    },
-                    onpause: () => {
-                        updateSongCardIcons(this, false);
-                    },
-                    onend: () => {
-                        updatePlayState(false);
-                        updateSongCardIcons(this, false);
-                        playNext();
-                    },
-                    onloaderror: () => {
-                        console.error('Error loading audio file:', musicUrl);
-                    }
-                });
-
-                currentSound.play();
-                setActiveSong(this, true);
-                updateMusicInfo(title, artist, coverArt || '', true);
-            }
+            playSong(song);
         }
     });
 });
@@ -196,9 +222,22 @@ if (progressBarContainer) {
     });
 }
 
-// Set initial song
-const lastPlayedSong = localStorage.getItem('lastPlayedSong');
-if (lastPlayedSong) {
-    const { title, artist, cover_art_url } = JSON.parse(lastPlayedSong) as Music;
-    updateMusicInfo(title, artist, cover_art_url, false);
+function initializeMusicPlayer(): void {
+    const lastPlayedSong = localStorage.getItem('lastPlayedSong');
+    let initialSong: Music;
+
+    if (lastPlayedSong) {
+        initialSong = JSON.parse(lastPlayedSong) as Music;
+    } else {
+        initialSong = getRandomSong();
+    }
+
+    updateMusicInfo(initialSong, false);
+    const initialButton = findButtonForSong(initialSong);
+    if (initialButton) {
+        setActiveSong(initialButton, false);
+    }
 }
+
+// Initialize the music player
+initializeMusicPlayer();

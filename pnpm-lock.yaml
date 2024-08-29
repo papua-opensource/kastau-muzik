@@ -14,6 +14,9 @@ dependencies:
   astro:
     specifier: ^4.14.2
     version: 4.14.2(typescript@5.5.4)
+  howler:
+    specifier: ^2.2.4
+    version: 2.2.4
   preline:
     specifier: ^2.4.1
     version: 2.4.1
@@ -23,6 +26,11 @@ dependencies:
   typescript:
     specifier: ^5.5.4
     version: 5.5.4
+
+devDependencies:
+  '@types/howler':
+    specifier: ^2.2.11
+    version: 2.2.11
 
 packages:
 
@@ -1078,6 +1086,10 @@ packages:
       '@types/unist': 3.0.3
     dev: false
 
+  /@types/howler@2.2.11:
+    resolution: {integrity: sha512-7aBoUL6RbSIrqKnpEgfa1wSNUBK06mn08siP2QI0zYk7MXfEJAaORc4tohamQYqCqVESoDyRWSdQn2BOKWj2Qw==}
+    dev: true
+
   /@types/mdast@4.0.4:
     resolution: {integrity: sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA==}
     dependencies:
@@ -2062,6 +2074,10 @@ packages:
       hast-util-parse-selector: 4.0.0
       property-information: 6.5.0
       space-separated-tokens: 2.0.2
+    dev: false
+
+  /howler@2.2.4:
+    resolution: {integrity: sha512-iARIBPgcQrwtEr+tALF+rapJ8qSc+Set2GJQl7xT1MQzWaVkFebdJhR3alVlSiUf5U7nAANKuj3aWpwerocD5w==}
     dev: false
 
   /html-escaper@3.0.3:

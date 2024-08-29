@@ -64,7 +64,7 @@ function updateMusicInfo(song: Music, isPlaying: boolean): void {
     heroSongTitle.textContent = song.title;
     heroSongArtist.textContent = song.artist;
     heroCoverArt.src = song.cover_art_url;
-    musicControlTitle.textContent = song.title;
+    musicControlTitle.textContent = `${song.title} - ${song.artist}`;
 
     updatePlayState(isPlaying);
 

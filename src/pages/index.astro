@@ -108,9 +108,6 @@ const popularMusic= [
 
     document.addEventListener("DOMContentLoaded", function () {
         new Swiper(".swiper", {
-            autoplay: {
-                delay: 6000,
-            },
             grabCursor: true,
             pagination: {
                 el: '.swiper-pagination',
@@ -136,16 +133,6 @@ const popularMusic= [
                 },
 				768: {
                     slidesPerView: 3.5,
-                    spaceBetween: 20,
-
-                    grid: {
-                        rows: 2,
-                        fill: "row",
-                    },
-                },
-                1368: {
-                    centeredSlides: false,
-                    slidesPerView: 4,
                     spaceBetween: 20,
 
                     grid: {
